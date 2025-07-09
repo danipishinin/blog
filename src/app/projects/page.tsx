@@ -106,9 +106,14 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <div className="space-y-20">
-        {projects.map((project) => (
+        {/* {projects.map((project) => (
           <ProjectCard key={project.url} {...project} />
-        ))}
+        ))} */}
+        <p>
+          {" "}
+          For now, working on my fulltime job and MBA project, but I will be
+          updating this page soon!!{" "}
+        </p>
       </div>
     </>
   );
