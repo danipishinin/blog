@@ -54,7 +54,7 @@ export default function RootLayout({
             </a>
           </div>
           <blockquote className="text-zinc-800 dark:text-zinc-300">
-            Nosce te Ipsun
+            Nosce te Ipsum
           </blockquote>
         </footer>
       </body>
