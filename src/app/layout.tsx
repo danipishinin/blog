@@ -41,13 +41,9 @@ export default function RootLayout({
         </main>
         <footer className="mx-auto flex max-w-prose flex-col items-center gap-2 py-6 text-sm text-zinc-500 dark:text-zinc-400">
           <div className="flex items-center gap-4">
-            <a
-              className="decoration-zinc-500 underline-offset-4 transition-all sm:hover:underline dark:decoration-zinc-400"
-              href="https://github.com/LukeberryPi/blog"
-              target="_blank"
-            >
-              Code
-            </a>
+            <p className="decoration-zinc-500 underline-offset-4 transition-all sm:hover:underline dark:decoration-zinc-400">
+              by LukeberryPi
+            </p>
 
             <a
               className="decoration-zinc-500 underline-offset-4 transition-all sm:hover:underline dark:decoration-zinc-400"
