@@ -92,9 +92,8 @@ export default function Header() {
           </Link>
           <Link
             className="group relative rounded px-2 py-px ring-1 ring-sky-500 ring-opacity-0 transition-all sm:hover:ring-opacity-100 dark:ring-sky-600 dark:ring-opacity-0"
-            href="/articles"
-            aria-label="View articles"
-            aria-current={path.startsWith("/articles") ? "page" : undefined}
+            href="https://descomplicandobytes.com/"
+            target="_blank"
           >
             /articles
             <Triangle
