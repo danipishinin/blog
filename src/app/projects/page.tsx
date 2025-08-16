@@ -1,4 +1,4 @@
-import { GitBranch, Globe } from "lucide-react";
+import { Globe, LucideApple } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
 
@@ -6,50 +6,31 @@ interface Project {
   name: string;
   description: string;
   imageUrl: string;
-  githubUrl: string;
   url: string;
   technologies: ReactNode;
+  urlAppleStore?: string;
+  urlGitHub?: string;
 }
 
 const projects: Project[] = [
   {
-    name: "css2wind",
-    description:
-      "Learn TailwindCSS by playing a minigame: there are eight CSS properties that you must translate to the equivalent TailwindCSS utility. Bet you can't get 8/8.",
-    url: "https://css2wind.com",
-    imageUrl: "/projects/css2wind.png",
-    githubUrl: "https://github.com/LukeberryPi/css2wind",
+    name: "Pomodoro",
+    description: "A productivity timer for the Pomodoro Technique.",
+    url: "https://pomodoro-web-reactjs.vercel.app/",
+    imageUrl: "/projects/pomodoro.png",
+
     technologies: (
-      <div className="flex items-center gap-x-3">
-        <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-200 dark:ring-1 dark:ring-zinc-500">
+      <div className="flex flex-wrap items-center gap-x-2">
+        <span className="rounded-full bg-blue-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-blue-500 dark:text-white">
           TypeScript
         </span>
-        <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-950 dark:bg-inherit dark:text-zinc-200 dark:ring-1 dark:ring-zinc-500">
+
+        <span className="rounded-full bg-cyan-500 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-cyan-400 dark:text-cyan-950">
+          NextJS
+        </span>
+
+        <span className="rounded-full bg-gray-800 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-gray-700 dark:text-gray-100">
           TailwindCSS
-        </span>
-        <span className="rounded-full bg-black px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-200 dark:ring-1 dark:ring-zinc-500">
-          Next.js
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "phived",
-    description:
-      "Stop procrastinating by dealing with five tasks at a time. If you want to add more tasks you need to resolve a previous one. Surprisingly effective.",
-    url: "https://phived.com",
-    imageUrl: "/projects/phived.png",
-    githubUrl: "https://github.com/LukeberryPi/phived",
-    technologies: (
-      <div className="flex items-center gap-x-3">
-        <span className="rounded-full bg-[#00D8FE] px-2.5 py-0.5 text-sm text-zinc-950 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
-          React
-        </span>
-        <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-950 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
-          TailwindCSS
-        </span>
-        <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
-          Vite
         </span>
       </div>
     ),
@@ -60,40 +41,49 @@ function ProjectCard({
   name,
   description,
   imageUrl,
-  githubUrl,
   url,
   technologies,
+  urlAppleStore,
 }: Project) {
   return (
-    <div className="flex-col divide-y divide-zinc-400 overflow-hidden rounded ring-1 ring-zinc-400 dark:divide-zinc-500 dark:ring-zinc-500">
-      <div className="flex items-center justify-between gap-4 p-4 max-sm:flex-col">
-        <h2 className="text-xl">{name}</h2>
+    <div className="flex-col divide-y divide-zinc-400 overflow-hidden rounded-lg shadow-lg ring-1 ring-zinc-400 dark:divide-zinc-500 dark:ring-zinc-500">
+      <div className="flex items-center justify-between gap-4 p-6 max-sm:flex-col max-sm:items-start max-sm:gap-3">
+        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+          {name}
+        </h2>
         {technologies}
       </div>
       <div>
-        <p className="p-4">{description}</p>
+        <p className="p-6 leading-relaxed text-zinc-600 dark:text-zinc-300">
+          {description}
+        </p>
       </div>
-      <Image
-        src={imageUrl}
-        width={620}
-        height={324}
-        alt="Logo for css2wind website"
-      />
+      <div className="bg-zinc-50 p-4 dark:bg-zinc-800/50">
+        <Image
+          src={imageUrl}
+          width={620}
+          height={324}
+          alt="Logo for project"
+          className="mx-auto w-auto rounded-md object-contain"
+        />
+      </div>
       <div className="flex w-full justify-between divide-x divide-zinc-400 dark:divide-zinc-500">
         <a
           href={url}
           target="_blank"
-          className="flex grow items-center justify-center gap-2 py-4 transition-all sm:hover:bg-zinc-200 sm:dark:hover:bg-zinc-800"
+          className="flex grow items-center justify-center gap-2 py-4 transition-all duration-200 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/20 dark:hover:text-blue-300"
         >
           <Globe strokeWidth={1.4} className="size-5" /> Visit website
         </a>
-        <a
-          href={githubUrl}
-          target="_blank"
-          className="flex grow items-center justify-center gap-2 py-4 transition-all sm:hover:bg-zinc-200 sm:dark:hover:bg-zinc-800"
-        >
-          <GitBranch strokeWidth={1.4} className="size-5" /> View code
-        </a>
+        {urlAppleStore && (
+          <a
+            href={urlAppleStore}
+            target="_blank"
+            className="flex grow items-center justify-center gap-2 py-4 transition-all duration-200 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/20 dark:hover:text-blue-300"
+          >
+            <LucideApple strokeWidth={1.4} className="size-5" /> Apple Store
+          </a>
+        )}
       </div>
     </div>
   );
@@ -102,19 +92,46 @@ function ProjectCard({
 export default function ProjectsPage() {
   return (
     <>
-      <h1 className="mb-16 mt-4 text-center text-5xl max-sm:text-4xl">
+      <h1 className="mb-16 mt-4 text-center text-5xl font-bold text-zinc-900 max-sm:text-4xl dark:text-zinc-100">
         Projects
       </h1>
       <div className="space-y-20">
-        {/* {projects.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.url} {...project} />
-        ))} */}
-        <p>
-          {" "}
-          For now, working on my fulltime job and MBA project, but I will be
-          updating this page soon!!{" "}
-        </p>
+        ))}
       </div>
     </>
   );
 }
+
+// Alternative color palette option - more muted and professional
+// Replace the technologies section with this for a softer look:
+
+const alternativeTechnologies = (
+  <div className="flex flex-wrap items-center gap-x-2">
+    {/* Muted blue palette */}
+    <span className="rounded-full bg-slate-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-slate-500">
+      TypeScript
+    </span>
+
+    <span className="rounded-full bg-teal-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-teal-500">
+      React
+    </span>
+
+    <span className="rounded-full bg-zinc-700 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-zinc-600">
+      React Native
+    </span>
+
+    <span className="rounded-full bg-indigo-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-indigo-500">
+      Expo
+    </span>
+
+    <span className="rounded-full bg-amber-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-amber-500">
+      Sentry
+    </span>
+
+    <span className="rounded-full bg-green-600 px-3 py-1 text-sm font-medium text-white shadow-sm dark:bg-green-500">
+      Amplitude
+    </span>
+  </div>
+);
